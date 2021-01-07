@@ -178,10 +178,8 @@ void new_master(){
     }
 
     FILE *fptr;
-    fptr = fopen("Class_masters", "w");
-
-
-
+    fptr = fopen("Masters", "w");
+    fprintf(fptr, "\nMaster: %s class %s\n", master->lastname, master->mastering_class);
 }
 
 
@@ -328,6 +326,34 @@ void try_password(){
 }
 
 
+void print_masters(){
+    FILE *fptr;
+  
+    char filename[100], c; 
+  
+    printf("Enter the filename to open \n"); 
+    scanf("%s", filename); 
+  
+    // Open file 
+    fptr = fopen(filename, "r"); 
+    if (fptr == NULL) 
+    { 
+        printf("Cannot open file \n"); 
+        exit(0); 
+    } 
+  
+    // Read contents from file 
+    c = fgetc(fptr); 
+    while (c != EOF) 
+    { 
+        printf ("%c", c); 
+        c = fgetc(fptr); 
+    } 
+  
+    fclose(fptr); 
+}
+
+
 
 void menu(){
     int ch;
@@ -337,6 +363,7 @@ void menu(){
         printf("\t[2]. Search Student.\n");
         printf("\t[3]. See all students\n");
         printf("\t[4]. New Class Master\n");
+        printf("\t[5]. Show Class Masters\n");
         printf("\t[0]. EXIT\n");
         printf("\tChoice> ");
         scanf("%d", &ch);
@@ -362,6 +389,10 @@ void menu(){
                 try_password();
                 new_master();
                 break;
+
+            case 5:
+                try_password();
+                print_masters();
         }
     }while(ch != 0);
 }
