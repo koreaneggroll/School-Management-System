@@ -4,7 +4,9 @@
 #include <string.h>
 //INCLUDES END
 
-long teacher_password = 5901634; //This password can do everything
+#define PASSWORD 5901634
+
+//long teacher_password = 5901634; //This password can do everything
 
 typedef struct{
     char username[50];//The username is public and everyone can see it
@@ -319,7 +321,7 @@ void try_password(){
     printf("\nPassword: ");
     scanf("%d", &try);
 
-    while(try != teacher_password){
+    while(try != PASSWORD){
         printf("\nPassword: ");
         scanf("%d", &try);
     }
